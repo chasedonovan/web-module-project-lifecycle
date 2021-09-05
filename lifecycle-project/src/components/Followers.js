@@ -40,6 +40,7 @@ class Followers extends Component {
   render() {
     return (
       <div>
+        <h2> Followers </h2>
         <div className="searchSection">
           <form onSubmit={this.handleSubmit}>
             <input placeholder="search followers" value={this.state.followers} onChange={this.handleChange} />
