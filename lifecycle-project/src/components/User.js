@@ -9,10 +9,11 @@ class User extends Component {
 
   componentDidMount() {
     axios.get(`https://api.github.com/users/chasedonovan`)
-      .then(resp => {
+      .then(res => {
         this.setState({
-          user: resp.data,
+          user: res.data,
         });
+        console.log('res', res)
       })
       .catch(err => {
         console.log(err);
@@ -28,11 +29,10 @@ class User extends Component {
             </div>
 
             <div className="infoBody">
-              <h3>Name: {this.state.user.name} </h3>
+              <h3>Name: {this.state.user.login} </h3>
+              <p>Repo Count: {this.state.user.public_repos}</p> 
+              <p>GitHub: {this.state.user.html_url}</p>
               <br />
-              <p>Bio: {this.state.user.bio} </p> 
-              <br />
-              <p>Location: {this.state.user.location}</p> <br />
             </div>
           </div>
     );

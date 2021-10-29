@@ -29,9 +29,9 @@ class Followers extends Component {
     this.setState({
       ...this.state,
       followers: e.target.value,
-      visibleFollowers: this.state.followerList.filter(F => {
-        console.log(F);
-        return F.login.includes(e.target.value)
+      visibleFollowers: this.state.followerList.filter(follower => {
+        console.log(follower);
+        return follower.login.includes(e.target.value)
       })
     })
   }
@@ -48,16 +48,17 @@ class Followers extends Component {
         </div>
 
         <div id="followerList">
-          {this.state.visibleFollowers.map(f => {
-              console.log(f);
+          {this.state.visibleFollowers.map(follower => {
+              console.log(follower);
               return <div className="followerCard">
                       <div className="followerImage">
                         <img style = {{width: 150}}
-                        src={f.avatar_url} alt={this.state.user.login}/>
+                        src={follower.avatar_url} alt={this.state.user.login}/>
                       </div>
                       <div className="followerBody">
-                        <h3>Username: {f.login}</h3>
-                        <p>GitHub: {f.url}</p>
+                        <h3>Username: {follower.login}</h3>
+                        <p>Repo Count: {follower.public_repos}</p>
+                        <p>GitHub: {follower.url}</p>
                       </div>
               </div>
             })
